@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makkala Pallavi — Business Development Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  :root {
+    --purple-bg: #1E4E8C;
+    --purple-dark: #18406F;
+    --purple-deeper: #123257;
+    --purple-card: rgba(255,255,255,0.08);
+    --purple-border: rgba(255,255,255,0.15);
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: rgba(245,233,200,0.18);
+    --gold-pale-solid: #F5E9C8;
+    --gold-dark: #8B6914;
+    --gold-border: rgba(201,168,76,0.4);
+    --white: #FFFFFF;
+    --text-white: rgba(255,255,255,0.95);
+    --text-white-mid: rgba(255,255,255,0.72);
+    --text-white-soft: rgba(255,255,255,0.5);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--purple-bg); color: var(--text-white); line-height: 1.7; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(46,37,104,0.95);
+    border-bottom: 1px solid var(--purple-border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 62px;
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold-light); font-weight: 600; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 13px; color: var(--text-white-mid); font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* SECTION BASE */
+  .section-inner { max-width: 960px; margin: 0 auto; padding: 5rem 2rem; }
+  .alt-bg { background: var(--purple-deeper); }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold-light); margin-bottom: .5rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--white); margin-bottom: 2.5rem; line-height: 1.25; }
+  .divider { width: 48px; height: 3px; background: var(--gold); border-radius: 2px; margin: .5rem 0 2.5rem; }
+
+  /* CARDS */
+  .glass-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+    backdrop-filter: blur(8px);
+  }
+  .gold-card {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: var(--radius);
+  }
+
+  /* HERO */
+  #home { background: var(--purple-deeper); position: relative; overflow: hidden; }
+  #home::before { content:''; position:absolute; top:-80px; right:-80px; width:360px; height:360px; border-radius:50%; background:rgba(255,255,255,0.05); pointer-events:none; }
+  #home::after { content:''; position:absolute; bottom:-100px; left:-60px; width:240px; height:240px; border-radius:50%; background:rgba(255,255,255,0.03); pointer-events:none; }
+  .hero-inner { max-width:960px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; padding:6rem 2rem 5rem; position:relative; z-index:1; }
+  .hero-badge { display:inline-block; background:rgba(201,168,76,0.18); color:var(--gold-light); font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; border-radius:20px; border:1px solid rgba(201,168,76,0.35); margin-bottom:1.2rem; }
+  .hero-name { font-family:'Playfair Display',serif; font-size:3.2rem; font-weight:700; line-height:1.1; color:var(--white); margin-bottom:.5rem; }
+  .hero-title { font-size:1rem; color:var(--gold-light); font-weight:500; margin-bottom:1.2rem; }
+  .hero-intro { font-size:15px; color:var(--text-white-mid); line-height:1.8; margin-bottom:2rem; }
+  .hero-btns { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-gold { display:inline-flex; align-items:center; gap:7px; background:var(--gold); color:#1A0F00; font-size:13px; font-weight:700; padding:11px 22px; border-radius:30px; text-decoration:none; border:none; cursor:pointer; transition:background .2s; }
+  .btn-gold:hover { background:var(--gold-light); }
+  .btn-ghost { display:inline-flex; align-items:center; gap:7px; background:transparent; color:var(--gold-light); font-size:13px; font-weight:600; padding:10px 22px; border-radius:30px; text-decoration:none; border:1.5px solid rgba(201,168,76,0.5); transition:all .2s; }
+  .btn-ghost:hover { background:rgba(201,168,76,0.12); }
+  .hero-photo { width:280px; height:280px; border-radius:50%; background:rgba(201,168,76,0.15); border:3px solid rgba(201,168,76,0.4); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:5rem; color:var(--gold-light); font-weight:700; margin:0 auto; position:relative; }
+  .hero-photo-ring { position:absolute; inset:-14px; border-radius:50%; border:1.5px dashed rgba(201,168,76,0.3); pointer-events:none; }
+  .open-chip { display:inline-flex; align-items:center; gap:6px; background:rgba(67,160,71,0.18); color:#81C784; font-size:12px; font-weight:500; padding:4px 12px; border-radius:20px; margin-bottom:1rem; border:1px solid rgba(67,160,71,0.3); }
+  .open-dot { width:7px; height:7px; border-radius:50%; background:#66BB6A; }
+
+  /* STATS */
+  .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.1); border-top:1px solid rgba(255,255,255,0.1); }
+  .stat { text-align:center; padding:2rem 1rem; background:var(--purple-deeper); }
+  .stat-num { font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:var(--gold-light); }
+  .stat-lbl { font-size:12px; color:var(--text-white-soft); margin-top:2px; }
+
+  /* ABOUT */
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+  .about-text p { font-size:15px; color:var(--text-white-mid); line-height:1.85; margin-bottom:1rem; }
+  .strengths { list-style:none; margin-top:1.5rem; display:flex; flex-direction:column; gap:10px; }
+  .strengths li { display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--text-white-mid); }
+  .strengths li i { color:var(--gold); font-size:16px; }
+  .ach-card { background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:var(--radius-sm); padding:1rem 1.1rem; border-left:3px solid var(--gold); margin-bottom:14px; }
+  .ach-card-num { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:var(--gold-light); }
+  .ach-card-desc { font-size:12.5px; color:var(--text-white-mid); margin-top:2px; }
+
+  /* SERVICES */
+  .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; }
+  .service-card { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); border-radius:var(--radius); padding:1.5rem 1.4rem; transition:border-color .2s,background .2s; }
+  .service-card:hover { border-color:rgba(201,168,76,0.5); background:rgba(201,168,76,0.08); }
+  .service-icon { width:46px; height:46px; border-radius:12px; background:rgba(201,168,76,0.15); display:flex; align-items:center; justify-content:center; margin-bottom:1rem; border:1px solid rgba(201,168,76,0.25); }
+  .service-icon i { font-size:22px; color:var(--gold-light); }
+  .service-title { font-size:15px; font-weight:600; color:var(--white); margin-bottom:.4rem; }
+  .service-desc { font-size:13px; color:var(--text-white-mid); line-height:1.65; }
+
+  /* PORTFOLIO */
+  .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; }
+  .portfolio-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius); padding:1.5rem 1.4rem; }
+  .portfolio-tag { display:inline-block; background:rgba(201,168,76,0.15); color:var(--gold-light); font-size:10px; font-weight:600; letter-spacing:1px; text-transform:uppercase; padding:3px 10px; border-radius:10px; margin-bottom:.8rem; border:1px solid rgba(201,168,76,0.25); }
+  .portfolio-title { font-size:14px; font-weight:600; color:var(--white); margin-bottom:.5rem; }
+  .portfolio-result { font-size:13px; color:var(--text-white-mid); line-height:1.6; }
+  .result-highlight { font-weight:600; color:var(--gold-light); }
+
+  /* SKILLS */
+  .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+  .skill-item { display:flex; flex-direction:column; gap:6px; }
+  .skill-label { font-size:13px; font-weight:500; color:var(--text-white-mid); display:flex; justify-content:space-between; }
+  .skill-pct { color:var(--gold-light); }
+  .skill-bar { height:6px; background:rgba(255,255,255,0.12); border-radius:10px; overflow:hidden; }
+  .skill-fill { height:100%; background:var(--gold); border-radius:10px; }
+
+  /* TOOLS */
+  .tools-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; }
+  .tool-card { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius-sm); padding:1.1rem 1rem; text-align:center; transition:border-color .2s; }
+  .tool-card:hover { border-color:rgba(201,168,76,0.4); }
+  .tool-card i { font-size:26px; color:var(--gold-light); display:block; margin-bottom:8px; }
+  .tool-name { font-size:12.5px; font-weight:500; color:var(--text-white-mid); }
+
+  /* TESTIMONIALS */
+  .testimonials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.2rem; }
+  .testimonial-card { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); border-radius:var(--radius); padding:1.75rem 1.5rem; }
+  .testimonial-quote { font-size:2.5rem; color:rgba(201,168,76,0.5); line-height:1; margin-bottom:.5rem; font-family:'Playfair Display',serif; }
+  .testimonial-text { font-size:13.5px; color:var(--text-white-mid); line-height:1.8; font-style:italic; margin-bottom:1.2rem; }
+  .testimonial-author { display:flex; align-items:center; gap:10px; }
+  .author-avatar { width:38px; height:38px; border-radius:50%; background:rgba(201,168,76,0.2); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:600; color:var(--gold-light); border:1.5px solid rgba(201,168,76,0.35); flex-shrink:0; }
+  .author-name { font-size:13px; font-weight:600; color:var(--white); }
+  .author-role { font-size:11px; color:var(--text-white-soft); }
+
+  /* RESUME */
+  .resume-box { background:rgba(201,168,76,0.08); border:1.5px dashed rgba(201,168,76,0.35); border-radius:var(--radius); padding:3rem 2rem; max-width:500px; margin:0 auto; text-align:center; }
+  .resume-icon { font-size:48px; color:var(--gold-light); margin-bottom:1rem; }
+  .resume-box h3 { font-family:'Playfair Display',serif; font-size:1.3rem; margin-bottom:.5rem; color:var(--white); }
+  .resume-box p { font-size:13.5px; color:var(--text-white-mid); margin-bottom:1.5rem; }
+
+  /* SAMPLE SLIDER */
+  .slider-wrap { overflow:hidden; border-radius:var(--radius); }
+  .slider-track { display:flex; transition:transform .4s ease; }
+  .slide { min-width:100%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); border-radius:var(--radius); padding:3rem; display:flex; gap:2.5rem; align-items:center; }
+  .slide-num { font-family:'Playfair Display',serif; font-size:4.5rem; font-weight:700; color:rgba(255,255,255,0.08); line-height:1; flex-shrink:0; min-width:80px; }
+  .slide-icon-wrap { width:76px; height:76px; border-radius:18px; background:rgba(201,168,76,0.15); display:flex; align-items:center; justify-content:center; flex-shrink:0; border:1px solid rgba(201,168,76,0.3); }
+  .slide-icon-wrap i { font-size:36px; color:var(--gold-light); }
+  .slide-content { flex:1; }
+  .slide-tag { display:inline-block; background:rgba(201,168,76,0.15); color:var(--gold-light); font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:3px 10px; border-radius:10px; margin-bottom:.6rem; border:1px solid rgba(201,168,76,0.3); }
+  .slide-title { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--white); margin-bottom:.5rem; }
+  .slide-desc { font-size:14px; color:var(--text-white-mid); line-height:1.7; }
+  .slide-tools { display:flex; gap:8px; flex-wrap:wrap; margin-top:.8rem; }
+  .slide-tool-tag { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); color:var(--text-white-mid); font-size:11px; padding:3px 9px; border-radius:8px; }
+  .slider-controls { display:flex; align-items:center; justify-content:center; gap:16px; margin-top:1.5rem; }
+  .slider-btn { width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:18px; color:var(--gold-light); transition:background .2s; }
+  .slider-btn:hover { background:rgba(201,168,76,0.2); }
+  .slider-dots { display:flex; gap:8px; }
+  .dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer; transition:background .2s; }
+  .dot.active { background:var(--gold); }
+  .slider-counter { font-size:12px; color:var(--text-white-soft); }
+
+  /* CONTACT */
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
+  .contact-info { display:flex; flex-direction:column; gap:12px; }
+  .contact-link { display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--text-white-mid); background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); border-radius:var(--radius-sm); padding:.85rem 1.1rem; font-size:13.5px; transition:border-color .2s; }
+  .contact-link:hover { border-color:rgba(201,168,76,0.5); }
+  .contact-link i { font-size:18px; color:var(--gold-light); flex-shrink:0; }
+  .contact-link-label { font-size:10.5px; color:var(--text-white-soft); text-transform:uppercase; letter-spacing:1px; margin-bottom:1px; }
+  .contact-link-val { font-weight:500; color:var(--white); font-size:13px; }
+  .contact-form { display:flex; flex-direction:column; gap:12px; }
+  .contact-form input, .contact-form textarea { width:100%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:var(--radius-sm); padding:.75rem 1rem; font-size:14px; font-family:'Inter',sans-serif; color:var(--white); outline:none; transition:border-color .2s; }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color:var(--text-white-soft); }
+  .contact-form input:focus, .contact-form textarea:focus { border-color:rgba(201,168,76,0.6); }
+  .contact-form textarea { resize:vertical; min-height:110px; }
+
+  footer { background:var(--purple-deeper); border-top:1px solid rgba(255,255,255,0.1); color:var(--text-white-soft); text-align:center; padding:1.5rem 2rem; font-size:12px; }
+  footer span { color:var(--gold-light); }
+
+  @media (max-width:640px) {
+    .hero-inner,.about-grid,.contact-grid { grid-template-columns:1fr; }
+    .hero-photo { width:200px; height:200px; font-size:3.5rem; }
+    .hero-name { font-size:2.2rem; }
+    .slide { flex-direction:column; gap:1.5rem; padding:2rem 1.5rem; }
+    .slide-num { font-size:2.5rem; min-width:auto; }
+    .stats-row { grid-template-columns:repeat(3,1fr); }
+    .nav-links { gap:.6rem; }
+    .nav-links a { font-size:11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Pallavi M.</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#samples">Samples</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<div id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="open-chip"><span class="open-dot"></span>Open to Work &amp; Freelance Projects</div>
+      <div class="hero-badge">Business Development Professional</div>
+      <h1 class="hero-name">Makkala<br>Pallavi</h1>
+      <p class="hero-title">Business Development Team Lead</p>
+      <p class="hero-intro">Results-driven BD professional with 1.5+ years of experience in inbound sales, team leadership, and CRM operations at Flashoot. Promoted to Team Lead within my first year — I help businesses grow through strategic lead generation, pipeline management, and client retention.</p>
+      <div class="hero-btns">
+        <a class="btn-gold" href="#contact"><i class="ti ti-mail"></i>Hire Me</a>
+        <a class="btn-ghost" href="#resume"><i class="ti ti-download"></i>Download CV</a>
+        <a class="btn-ghost" href="#services"><i class="ti ti-briefcase"></i>My Services</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;">
+      <div class="hero-photo">MP<div class="hero-photo-ring"></div></div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num">1.5+</div><div class="stat-lbl">Years of experience</div></div>
+    <div class="stat"><div class="stat-num">100–150</div><div class="stat-lbl">Leads managed daily</div></div>
+    <div class="stat"><div class="stat-num">&lt;1 yr</div><div class="stat-lbl">Time to promotion</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="alt-bg" id="about">
+  <div class="section-inner">
+    <div class="section-label">About me</div>
+    <h2 class="section-title">Who I am</h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am a Business Development Team Lead with hands-on experience managing 100–150 leads daily, building high-performing sales teams, and streamlining inbound sales operations at Flashoot, Hyderabad.</p>
+        <p>My strength lies in blending analytical thinking with strong people skills — whether it's resolving CRM bottlenecks, managing client databases in Zoho CRM &amp; Runo, running smooth payout processes, or coaching team members to hit targets.</p>
+        <p>Now expanding into freelancing to help businesses worldwide scale their pipeline, generate qualified leads, and build lasting client relationships.</p>
+        <ul class="strengths">
+          <li><i class="ti ti-check"></i>Inbound sales &amp; lead qualification</li>
+          <li><i class="ti ti-check"></i>Team mentoring &amp; workflow optimization</li>
+          <li><i class="ti ti-check"></i>CRM management (Zoho, Runo)</li>
+          <li><i class="ti ti-check"></i>Client retention &amp; follow-up strategies</li>
+          <li><i class="ti ti-check"></i>Revenue-focused pipeline management</li>
+          <li><i class="ti ti-check"></i>Database accuracy &amp; reporting</li>
+        </ul>
+      </div>
+      <div>
+        <div class="ach-card"><div class="ach-card-num">Promoted in &lt;1 Year</div><div class="ach-card-desc">Advanced from BD Executive to Team Lead at Flashoot — recognized for consistent performance and leadership.</div></div>
+        <div class="ach-card"><div class="ach-card-num">100–150 Leads / Day</div><div class="ach-card-desc">Managed and qualified high-volume inbound leads daily, maintaining structured pipelines and improving conversion rates.</div></div>
+        <div class="ach-card"><div class="ach-card-num">Team Leadership</div><div class="ach-card-desc">Built and mentored BD teams, implemented CRM workflows, and drove consistent revenue growth at Flashoot.</div></div>
+        <div class="ach-card" style="margin-bottom:0"><div class="ach-card-num">Industry: Photography Tech</div><div class="ach-card-desc">Deep expertise in a fast-paced B2B/B2C marketplace — adaptable to any service-based business.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="section-inner">
+    <div class="section-label">What I offer</div>
+    <h2 class="section-title">Services</h2>
+    <div class="divider"></div>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon"><i class="ti ti-target"></i></div><div class="service-title">Lead Conversion</div><div class="service-desc">Turn cold and warm inbound leads into paying clients using structured follow-up sequences, objection handling, and CRM-tracked pipelines.</div></div>
+      <div class="service-card"><div class="service-icon"><i class="ti ti-brand-linkedin"></i></div><div class="service-title">LinkedIn Prospecting</div><div class="service-desc">Identify and connect with decision-makers using Sales Navigator. Build targeted prospect lists and personalized outreach campaigns.</div></div>
+      <div class="service-card"><div class="service-icon"><i class="ti ti-calendar-check"></i></div><div class="service-title">Appointment Setting</div><div class="service-desc">Schedule qualified discovery calls and demos for your sales team — outreach, follow-ups, and calendar coordination handled end-to-end.</div></div>
+      <div class="service-card"><div class="service-icon"><i class="ti ti-database"></i></div><div class="service-title">CRM Data Management</div><div class="service-desc">Keep your CRM clean and accurate — data entry, deduplication, lead tagging, pipeline updates, and reporting in Zoho, HubSpot, and more.</div></div>
+      <div class="service-card"><div class="service-icon"><i class="ti ti-send"></i></div><div class="service-title">Sales Outreach</div><div class="service-desc">Create and execute email &amp; LinkedIn outreach sequences — personalized messaging, A/B tested templates, and response tracking.</div></div>
+      <div class="service-card"><div class="service-icon"><i class="ti ti-headset"></i></div><div class="service-title">Virtual Assistance</div><div class="service-desc">Reliable remote support for research, data entry, competitor analysis, inbox management, lead list building, and business operations.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<div class="alt-bg" id="portfolio">
+  <div class="section-inner">
+    <div class="section-label">Results &amp; case studies</div>
+    <h2 class="section-title">Portfolio</h2>
+    <div class="divider"></div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card"><span class="portfolio-tag">Lead Conversion</span><div class="portfolio-title">Inbound Pipeline Optimization</div><div class="portfolio-result">Restructured the inbound lead qualification process for 100–150 daily leads, resulting in <span class="result-highlight">improved response time and higher booking conversion</span>.</div></div>
+      <div class="portfolio-card"><span class="portfolio-tag">Team Leadership</span><div class="portfolio-title">BD Team Mentoring Program</div><div class="portfolio-result">Trained and onboarded new BD executives — team achieved <span class="result-highlight">consistent daily targets with reduced onboarding time</span>.</div></div>
+      <div class="portfolio-card"><span class="portfolio-tag">CRM Management</span><div class="portfolio-title">CRM Database Cleanup</div><div class="portfolio-result">Audited and reorganized Zoho CRM — consistent tagging and automated reminders led to <span class="result-highlight">cleaner reporting and faster follow-ups</span>.</div></div>
+      <div class="portfolio-card"><span class="portfolio-tag">Client Retention</span><div class="portfolio-title">Post-Sale Retention Strategy</div><div class="portfolio-result">Designed structured post-booking follow-up flows contributing to <span class="result-highlight">improved satisfaction and repeat business</span>.</div></div>
+      <div class="portfolio-card"><span class="portfolio-tag">Sales Operations</span><div class="portfolio-title">Payout Process Streamlining</div><div class="portfolio-result">Introduced a tracking sheet system to reduce delays and ensure <span class="result-highlight">on-time payout processing</span> every cycle.</div></div>
+      <div class="portfolio-card"><span class="portfolio-tag">Reporting</span><div class="portfolio-title">Lead Performance Dashboard</div><div class="portfolio-result">Built a Google Sheets daily report tracker giving management <span class="result-highlight">real-time visibility</span> into conversion metrics.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills">
+  <div class="section-inner">
+    <div class="section-label">Expertise level</div>
+    <h2 class="section-title">Skills</h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+      <div class="skill-item"><div class="skill-label">Lead Conversion <span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+      <div class="skill-item"><div class="skill-label">Business Development <span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><div class="skill-label">CRM Management <span class="skill-pct">92%</span></div><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+      <div class="skill-item"><div class="skill-label">Team Leadership <span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+      <div class="skill-item"><div class="skill-label">LinkedIn Prospecting <span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div class="skill-item"><div class="skill-label">Sales Outreach &amp; Copywriting <span class="skill-pct">83%</span></div><div class="skill-bar"><div class="skill-fill" style="width:83%"></div></div></div>
+      <div class="skill-item"><div class="skill-label">Microsoft Excel <span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-item"><div class="skill-label">Google Sheets <span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div class="skill-item"><div class="skill-label">Client Retention <span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      <div class="skill-item"><div class="skill-label">Pipeline Management <span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS -->
+<div class="alt-bg" id="tools">
+  <div class="section-inner">
+    <div class="section-label">My tech stack</div>
+    <h2 class="section-title">Tools I use</h2>
+    <div class="divider"></div>
+    <div class="tools-grid">
+      <div class="tool-card"><i class="ti ti-brand-linkedin"></i><div class="tool-name">LinkedIn Sales Navigator</div></div>
+      <div class="tool-card"><i class="ti ti-rocket"></i><div class="tool-name">Apollo.io</div></div>
+      <div class="tool-card"><i class="ti ti-database"></i><div class="tool-name">HubSpot CRM</div></div>
+      <div class="tool-card"><i class="ti ti-chart-bar"></i><div class="tool-name">Zoho CRM</div></div>
+      <div class="tool-card"><i class="ti ti-phone-call"></i><div class="tool-name">Runo CRM</div></div>
+      <div class="tool-card"><i class="ti ti-table"></i><div class="tool-name">Microsoft Excel</div></div>
+      <div class="tool-card"><i class="ti ti-table-options"></i><div class="tool-name">Google Sheets</div></div>
+      <div class="tool-card"><i class="ti ti-mail-forward"></i><div class="tool-name">Email Outreach Tools</div></div>
+    </div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white);margin:2.5rem 0 1.2rem;">AI Tools I Work With</h3>
+    <div class="tools-grid">
+      <div class="tool-card"><i class="ti ti-notebook"></i><div class="tool-name">NotebookLM (Summaries, Podcasts, Slides)</div></div>
+      <div class="tool-card"><i class="ti ti-microphone-2"></i><div class="tool-name">Wispr Flow AI (Voice Dictation)</div></div>
+      <div class="tool-card"><i class="ti ti-layout-grid"></i><div class="tool-name">Google Stitch (UI Design)</div></div>
+      <div class="tool-card"><i class="ti ti-code"></i><div class="tool-name">Google AI Studio (App Building)</div></div>
+      <div class="tool-card"><i class="ti ti-sparkles"></i><div class="tool-name">Claude AI</div></div>
+      <div class="tool-card"><i class="ti ti-message-chatbot"></i><div class="tool-name">ChatGPT (Mock Interviews)</div></div>
+      <div class="tool-card"><i class="ti ti-chart-dots-3"></i><div class="tool-name">Julius AI (Data Analysis)</div></div>
+      <div class="tool-card"><i class="ti ti-world-search"></i><div class="tool-name">Comet (AI Job Search)</div></div>
+      <div class="tool-card"><i class="ti ti-route"></i><div class="tool-name">n8n (Workflow Automation)</div></div>
+      <div class="tool-card"><i class="ti ti-photo-ai"></i><div class="tool-name">Gemini (AI Image Generation)</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div id="testimonials">
+  <div class="section-inner">
+    <div class="section-label">What others say</div>
+    <h2 class="section-title">Testimonials</h2>
+    <div class="divider"></div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-text">Pallavi has an exceptional ability to handle high-volume leads without losing quality. Her attention to CRM accuracy and client follow-ups helped our team hit targets consistently.</div>
+        <div class="testimonial-author"><div class="author-avatar">OM</div><div><div class="author-name">Operations Manager, Flashoot</div><div class="author-role">Hyderabad, India</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">"</div>
+        <div class="testimonial-text">Working alongside Pallavi, I saw firsthand how she could mentor new team members while still exceeding her own conversion targets. A true professional.</div>
+        <div class="testimonial-author"><div class="author-avatar">RC</div><div><div class="author-name">BD Colleague, Flashoot</div><div class="author-role">Hyderabad, India</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESUME -->
+<div class="alt-bg" id="resume">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-label">Download</div>
+    <h2 class="section-title">Resume &amp; Documents</h2>
+    <div class="divider" style="margin:0 auto 2.5rem;"></div>
+    <div class="tools-grid" style="max-width:780px;margin:0 auto;">
+      <div class="resume-box" style="max-width:none;">
+        <i class="ti ti-file-cv resume-icon"></i>
+        <h3>Visual CV</h3>
+        <p>Detailed CV with full work history and achievements.</p>
+        <a class="btn-gold" href="Makkala_Pallavi_CV.docx" download style="margin:0 auto;display:inline-flex;"><i class="ti ti-download"></i>Download CV</a>
+      </div>
+      <div class="resume-box" style="max-width:none;">
+        <i class="ti ti-file-text resume-icon"></i>
+        <h3>ATS Resume</h3>
+        <p>Plain-format resume optimized for applicant tracking systems.</p>
+        <a class="btn-gold" href="Makkala_Pallavi_ATS_Resume.docx" download style="margin:0 auto;display:inline-flex;"><i class="ti ti-download"></i>Download ATS Resume</a>
+      </div>
+      <div class="resume-box" style="max-width:none;">
+        <i class="ti ti-mail-opened resume-icon"></i>
+        <h3>Cover Letter</h3>
+        <p>Editable cover letter template for job applications.</p>
+        <a class="btn-gold" href="Makkala_Pallavi_Cover_Letter.docx" download style="margin:0 auto;display:inline-flex;"><i class="ti ti-download"></i>Download Cover Letter</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SAMPLE WORK SLIDER -->
+<div id="samples">
+  <div class="section-inner">
+    <div class="section-label">Freelance starter kit</div>
+    <h2 class="section-title">Sample work</h2>
+    <div class="divider"></div>
+    <div class="slider-wrap">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide">
+          <div class="slide-num">01</div>
+          <div class="slide-icon-wrap"><i class="ti ti-table-export"></i></div>
+          <div class="slide-content">
+            <span class="slide-tag">Lead Generation</span>
+            <div class="slide-title">Lead Conversion Sample Sheet</div>
+            <div class="slide-desc">A structured tracker for inbound leads with stage tracking, follow-up dates, status notes, and conversion outcomes. Designed to plug directly into any CRM or Google Sheets workflow.</div>
+            <div class="slide-tools"><span class="slide-tool-tag">Google Sheets</span><span class="slide-tool-tag">Zoho CRM</span></div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-num">02</div>
+          <div class="slide-icon-wrap"><i class="ti ti-report-search"></i></div>
+          <div class="slide-content">
+            <span class="slide-tag">Research</span>
+            <div class="slide-title">Market Research Report</div>
+            <div class="slide-desc">Competitor landscape overview, target audience segmentation, and market sizing analysis for a service-based business entering a new market. Delivered in a clean, shareable PDF.</div>
+            <div class="slide-tools"><span class="slide-tool-tag">PDF</span><span class="slide-tool-tag">MS Word</span><span class="slide-tool-tag">Google Docs</span></div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-num">03</div>
+          <div class="slide-icon-wrap"><i class="ti ti-chart-dots"></i></div>
+          <div class="slide-content">
+            <span class="slide-tag">Analysis</span>
+            <div class="slide-title">Competitor Analysis Report</div>
+            <div class="slide-desc">Side-by-side analysis of 5 competitors covering features, pricing, positioning, strengths, and gaps — giving your business a clear picture of where to differentiate and win.</div>
+            <div class="slide-tools"><span class="slide-tool-tag">PDF</span><span class="slide-tool-tag">Google Sheets</span></div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-num">04</div>
+          <div class="slide-icon-wrap"><i class="ti ti-mail"></i></div>
+          <div class="slide-content">
+            <span class="slide-tag">Outreach</span>
+            <div class="slide-title">Email Outreach Template Pack</div>
+            <div class="slide-desc">A proven 4-step cold email sequence — intro, follow-up 1, follow-up 2, and breakup email — personalized for B2B decision-makers to maximize open and reply rates.</div>
+            <div class="slide-tools"><span class="slide-tool-tag">Email</span><span class="slide-tool-tag">HubSpot</span><span class="slide-tool-tag">Apollo.io</span></div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-num">05</div>
+          <div class="slide-icon-wrap"><i class="ti ti-brand-linkedin"></i></div>
+          <div class="slide-content">
+            <span class="slide-tag">LinkedIn</span>
+            <div class="slide-title">LinkedIn Outreach Template</div>
+            <div class="slide-desc">A connection request + follow-up note sequence optimized for B2B decision-maker outreach on LinkedIn — short, personalized, and built for high acceptance rates.</div>
+            <div class="slide-tools"><span class="slide-tool-tag">LinkedIn</span><span class="slide-tool-tag">Sales Navigator</span></div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-num">06</div>
+          <div class="slide-icon-wrap"><i class="ti ti-list-check"></i></div>
+          <div class="slide-content">
+            <span class="slide-tag">Prospecting</span>
+            <div class="slide-title">Lead Prospecting List (50 Contacts)</div>
+            <div class="slide-desc">A sample 50-row B2B prospect list with full name, company, job title, verified email, LinkedIn URL, and outreach status — ready to import into any CRM or outreach tool.</div>
+            <div class="slide-tools"><span class="slide-tool-tag">Google Sheets</span><span class="slide-tool-tag">Apollo.io</span><span class="slide-tool-tag">CRM-ready</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button class="slider-btn" id="prevBtn"><i class="ti ti-chevron-left"></i></button>
+      <div class="slider-dots" id="sliderDots"></div>
+      <button class="slider-btn" id="nextBtn"><i class="ti ti-chevron-right"></i></button>
+      <span class="slider-counter" id="sliderCounter">1 / 6</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="alt-bg" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Contact me</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <a class="contact-link" href="mailto:pallavimakkala20@gmail.com"><i class="ti ti-mail"></i><div><div class="contact-link-label">Email</div><div class="contact-link-val">pallavimakkala20@gmail.com</div></div></a>
+        <a class="contact-link" href="tel:9494530206"><i class="ti ti-phone"></i><div><div class="contact-link-label">Phone</div><div class="contact-link-val">+91 94945 30206</div></div></a>
+        <a class="contact-link" href="https://www.linkedin.com/in/makkalapallavi-58235329a" target="_blank"><i class="ti ti-brand-linkedin"></i><div><div class="contact-link-label">LinkedIn</div><div class="contact-link-val">makkalapallavi-58235329a</div></div></a>
+        <a class="contact-link" href="#" onclick="alert('Add your Fiverr profile URL here.')"><i class="ti ti-star"></i><div><div class="contact-link-label">Fiverr</div><div class="contact-link-val">fiverr.com/pallavimakkala</div></div></a>
+        <a class="contact-link" href="#" onclick="alert('Add your Upwork profile URL here.')"><i class="ti ti-briefcase"></i><div><div class="contact-link-label">Upwork</div><div class="contact-link-val">upwork.com/freelancers/pallavi</div></div></a>
+        <a class="contact-link" href="#"><i class="ti ti-map-pin"></i><div><div class="contact-link-label">Location</div><div class="contact-link-val">Padmarao Nagar, Secunderabad, Hyderabad</div></div></a>
+      </div>
+      <div>
+        <p style="font-size:14px;color:var(--text-white-mid);margin-bottom:1rem;">Have a project in mind? Send me a message and I'll get back to you within 24 hours.</p>
+        <div class="contact-form">
+          <input type="text" placeholder="Your name">
+          <input type="email" placeholder="Your email">
+          <input type="text" placeholder="Subject (e.g. Lead Generation Project)">
+          <textarea placeholder="Tell me about your project..."></textarea>
+          <button class="btn-gold" onclick="alert('Connect this to Formspree.io to receive emails.')"><i class="ti ti-send"></i>Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>&copy; 2026 <span>Makkala Pallavi</span> &nbsp;·&nbsp; Business Development Team Lead &nbsp;·&nbsp; Hyderabad, India</footer>
+
+<script>
+  const track = document.getElementById('sliderTrack');
+  const dotsEl = document.getElementById('sliderDots');
+  const counter = document.getElementById('sliderCounter');
+  const total = 6;
+  let current = 0;
+  for (let i = 0; i < total; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  }
+  function goTo(n) {
+    current = (n + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+</script>
+</body>
+</html>
